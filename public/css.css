@@ -1,0 +1,67 @@
+body{
+    background-color: white;
+}
+.navbar-dark{
+    background-color: black;
+}
+header.masthead {
+    padding-top: 10.5rem;
+    padding-bottom: 10rem;
+    text-align: center;
+    color: #fff;
+    background-image: url("../assets/img/bg-masthead2.jpg");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: cover;
+}
+
+.main-heading{
+    color: white;
+}
+.btn-primary{
+    border: none;
+    background-color: darkred;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin-top: 50px;
+    cursor: pointer;
+}
+.btn-uprav{
+    border: none;
+    background-color: gray;
+    color: white;
+}
+.btn-vymaz{
+    border: none;
+    background-color: darkred;
+    color: white;
+}
+.page-section {
+    padding: 6rem 0;
+}
+.page-section-right {
+    padding: 6rem 0 6rem 80rem;
+}
+.picture{
+    width: 100px;
+}
+.picture-burger{
+    width: 150px;
+}
+.restaurant-photo{
+    width: 400px;
+    height: 300px;
+    padding: 0 0 0 0 ;
+}
+.close{
+    color: red;
+}
+
+.form-group{
+    padding: 10px 0 0 0;
+}
