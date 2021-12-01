@@ -13,7 +13,7 @@ class MenuModel extends Model
     public $nazov;
     public $zlozenie;
     public $img;
-    public $cena;
+    public float $cena;
 
     public function __construct()
     {
@@ -21,7 +21,7 @@ class MenuModel extends Model
         $this->nazov = null;
         $this->zlozenie = null;
         $this->img = null;
-        $this->cena = null;
+        $this->cena = 0.0;
     }
 
     static public function setDbColumns()

@@ -17,13 +17,13 @@
             </div>
             <div class="col-md-9">
                 <h4 class="my-3">Galéria:</h4>
+                <a class="predchadzajuci" onclick="posun(-1)">❮</a>
+                <a class="dalsi" onclick="posun(1)">❯</a>
                 <div class="row">
                     <img class="col-3 restaurant-photo" src="semestralka/assets/img/best_burger2.jpg" alt="fotka restauracie">
                     <img class="col-3 restaurant-photo" src="semestralka/assets/img/best_burger3.jpg" alt="fotka restauracie">
                     <img class="col-3 restaurant-photo" src="semestralka/assets/img/best_burger.jpg" alt="fotka restauracie">
-                </div>
-                <div class="row">
-                    <img class="col-3 restaurant-photo"  src="semestralka/assets/img/best_burger6.jpg" alt="fotka restauracie">
+                    <img class="col-3 restaurant-photo" src="semestralka/assets/img/best_burger6.jpg" alt="fotka restauracie">
                     <img class="col-3 restaurant-photo" src="semestralka/assets/img/best_burger5.jpg" alt="fotka burgrov">
                     <img class="col-3 restaurant-photo" src="semestralka/assets/img/logo.jpg" alt="fotka restauracie">
                 </div>

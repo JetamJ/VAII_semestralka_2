@@ -54,14 +54,50 @@ header.masthead {
     width: 150px;
 }
 .restaurant-photo{
-    width: 400px;
-    height: 300px;
+    width: 800px;
+    height: 500px;
     padding: 0 0 0 0 ;
+    display: none;
 }
+
 .close{
     color: red;
 }
 
 .form-group{
     padding: 10px 0 0 0;
+}
+.menu{
+    margin-top: 50px;
+}
+
+.dalsi {
+    cursor: pointer;
+    position: center;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    margin-top: 500px;
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+
+.predchadzajuci {
+    cursor: pointer;
+    position: center;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    margin-top: 500px;
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
 }

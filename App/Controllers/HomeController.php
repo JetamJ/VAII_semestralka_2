@@ -48,14 +48,17 @@ class HomeController extends AControllerBase
 
     public function pridaj()
     {
-        $art = new MenuModel();
-        $art->setNazov($_POST['nazov']);
-        $art->setZlozenie($_POST['zlozenie']);
-        $art->setImg($_POST['img']);
-        $art->setCena($_POST['cena']);
-        $art->save();
-
-        $this->vratMenu();
+        if ($this->kontrola($_POST['nazov'],$_POST['zlozenie'],$_POST['img'],$_POST['cena'])) {
+            $art = new MenuModel();
+            $art->setNazov($_POST['nazov']);
+            $art->setZlozenie($_POST['zlozenie']);
+            $art->setImg($_POST['img']);
+            $art->setCena($_POST['cena']);
+            $art->save();
+            $this->vratMenu();
+        }else {
+            $this->vratMenu();
+        }
     }
 
     public function vymaz()
@@ -78,8 +81,20 @@ class HomeController extends AControllerBase
         $art->setImg($_POST['img']);
         $art->setCena($_POST['cena']);
         $art->save();
-
         $this->vratMenu();
     }
 
+    public function kontrola($nazov, $zlozenie, $img, $cena){
+        if ($nazov == null){
+            return false;
+        }elseif ($zlozenie == null){
+            return false;
+        }elseif ($img == null){
+            return false;
+        }elseif ($cena == null){
+            return false;
+        }else {
+            return true;
+        }
+    }
 }
