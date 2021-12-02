@@ -1,3 +1,9 @@
+<?php if (isset($_GET['error'])) {?>
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <?= $_GET['error'] ?>
+    </div>
+<?php } ?>
 <section class="page-section">
     <div class="container">
         <div class="row text-center">

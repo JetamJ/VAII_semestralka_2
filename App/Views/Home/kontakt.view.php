@@ -1,3 +1,4 @@
+<body onload="aktualny(1)">
 <section class="page-section">
     <div class="container-fluid">
         <div class="row">
@@ -31,3 +32,4 @@
         </div>
     </div>
 </section>
+</body>

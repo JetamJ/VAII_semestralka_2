@@ -49,39 +49,42 @@ class HomeController extends AControllerBase
     public function pridaj()
     {
         if ($this->kontrola($_POST['nazov'],$_POST['zlozenie'],$_POST['img'],$_POST['cena'])) {
-            $art = new MenuModel();
-            $art->setNazov($_POST['nazov']);
-            $art->setZlozenie($_POST['zlozenie']);
-            $art->setImg($_POST['img']);
-            $art->setCena($_POST['cena']);
-            $art->save();
-            $this->vratMenu();
+            $Model = new MenuModel();
+            $Model->setNazov($_POST['nazov']);
+            $Model->setZlozenie($_POST['zlozenie']);
+            $Model->setImg($_POST['img']);
+            $Model->setCena($_POST['cena']);
+            $Model->save();
+            $this->vratMenu("?c=home&a=menu","");
         }else {
-            $this->vratMenu();
+            $this->vratMenu("?c=home&a=menu","Zadali ste zle parametre");
         }
     }
 
     public function vymaz()
     {
-        $art = MenuModel::getOne($_GET['id']);
-        $art->delete();
-        $this->vratMenu();
+        $Model = MenuModel::getOne($_GET['id']);
+        $Model->delete();
+        $this->vratMenu("?c=home&a=menu","");
     }
 
-    public function vratMenu()
+    public function vratMenu($cesta, $sprava)
     {
-        header("Location:?c=home&a=menu");
-        die();
+        if ($sprava == ""){
+            header("Location:$cesta");
+        }else {
+            header("Location:$cesta&error=$sprava");
+        }
     }
 
     public function uprav(){
-        $art = MenuModel::getOne($_GET['id']);
-        $art->setNazov($_POST['nazov']);
-        $art->setZlozenie($_POST['zlozenie']);
-        $art->setImg($_POST['img']);
-        $art->setCena($_POST['cena']);
-        $art->save();
-        $this->vratMenu();
+        $Model = MenuModel::getOne($_GET['id']);
+        $Model->setNazov($_POST['nazov']);
+        $Model->setZlozenie($_POST['zlozenie']);
+        $Model->setImg($_POST['img']);
+        $Model->setCena($_POST['cena']);
+        $Model->save();
+        $this->vratMenu("?c=home&a=menu","");
     }
 
     public function kontrola($nazov, $zlozenie, $img, $cena){
