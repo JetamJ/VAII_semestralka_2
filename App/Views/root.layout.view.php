@@ -21,6 +21,7 @@
                 <li class="nav-item"><a class="nav-link" href="?c=home">Domov</a></li>
                 <li class="nav-item"><a class="nav-link" href="?c=home&a=menu">Menu</a></li>
                 <li class="nav-item"><a class="nav-link" href="?c=home&a=kontakt">Kontakt</a></li>
+                <li class="nav-item"><a class="nav-link" href="?c=home&a=login">Login</a></li>
             </ul>
         </div>
     </div>

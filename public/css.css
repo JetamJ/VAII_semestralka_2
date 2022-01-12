@@ -101,3 +101,7 @@ header.masthead {
     user-select: none;
     -webkit-user-select: none;
 }
+
+.box {
+    border-radius: 25px;
+}
