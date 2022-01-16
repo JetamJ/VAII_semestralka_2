@@ -25,8 +25,6 @@
             </div>
         </div>
 
-
-
         <button type="pridaj" class="btn btn-outline-success">Pridaj</button>
     </form>
 </div>

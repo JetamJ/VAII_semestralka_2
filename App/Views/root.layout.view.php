@@ -11,7 +11,6 @@
 
 </head>
 <body>
-
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
         <a class="navbar-brand" href="#">Best burger</a>
@@ -21,10 +20,18 @@
                 <li class="nav-item"><a class="nav-link" href="?c=home">Domov</a></li>
                 <li class="nav-item"><a class="nav-link" href="?c=home&a=menu">Menu</a></li>
                 <li class="nav-item"><a class="nav-link" href="?c=home&a=kontakt">Kontakt</a></li>
-                <li class="nav-item"><a class="nav-link" href="?c=home&a=login">Login</a></li>
+                <?php if(\App\Prihlasenie::jePrihlaseny()){?>
+                    <li class="nav-item"><a class="nav-link" href="?c=home&a=profil">Profil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="?c=pouzivatelia&a=odhlasenie">Odhlasit</a></li>
+                <?php } else {?>
+                    <li class="nav-item"><a class="nav-link" href="?c=pouzivatelia&a=login">Prihlasit</a></li>
+                <?php }?>
             </ul>
         </div>
     </div>
+    <?php if(\App\Prihlasenie::jePrihlaseny()){?>
+        <p class="prihlasenieInfo">Ste prihlaseny ako <?= \App\Prihlasenie::getMeno() ?></p>
+    <?php } ?>
 </nav>
 <header class="masthead">
     <div class="container">

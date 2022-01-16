@@ -9,24 +9,28 @@ use App\Core\Model;
 
 class RegistraciaModel extends Model
 {
+    public $id;
     public $meno;
     public $priezvisko;
     public $email;
     public $heslo;
     public $status;
+    public $profilovka;
 
     public function __construct()
     {
+        $this->id = 0;
         $this->meno = null;
         $this->priezvisko = null;
         $this->email = null;
         $this->heslo = null;
         $this->status = null;
+        $this->profilovka = null;
     }
 
     static public function setDbColumns()
     {
-        return ['email', 'meno', 'priezvisko',  'heslo', 'status'];
+        return ['id','email', 'meno', 'priezvisko',  'heslo', 'status', 'profilovka'];
     }
 
     static public function setTableName()
@@ -84,5 +88,13 @@ class RegistraciaModel extends Model
         $this->status = $status;
     }
 
+    public function getProfilovka()
+    {
+        return $this->profilovka;
+    }
 
+    public function setProfilovka($profilovka): void
+    {
+        $this->profilovka = $profilovka;
+    }
 }

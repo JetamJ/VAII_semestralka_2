@@ -1,3 +1,9 @@
+<?php if (isset($_GET['error'])) {?>
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <?= $_GET['error'] ?>
+    </div>
+<?php } ?>
 <section class="vh-100" style="background-color: #eee;">
     <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-75">
@@ -9,7 +15,7 @@
 
                                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Prihlasenie</p>
 
-                                <form class="mx-1 mx-md-4" method="post" action="?a=prihlasenie">
+                                <form class="mx-1 mx-md-4" method="post" action="?c=pouzivatelia&a=prihlasenie">
 
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
@@ -35,7 +41,7 @@
 
                                     <div class="text-center text-lg-start mt-8 pt-2 ">
                                         <button type="prihlasenie" class="btn btn-primary btn-lg">Login</button>
-                                        <p class="small fw-bold mt-2 pt-1 mb-0">Nemaš učet? <a href="?c=home&a=vytvorUcet"" class="link-danger">Zaregistruj sa</a></p>
+                                        <p class="small fw-bold mt-2 pt-1 mb-0">Nemaš učet? <a href="?c=pouzivatelia&a=registracia"" class="link-danger">Zaregistruj sa</a></p>
                                     </div>
 
                                 </form>

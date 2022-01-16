@@ -105,3 +105,9 @@ header.masthead {
 .box {
     border-radius: 25px;
 }
+
+.prihlasenieInfo{
+    color: white;
+    padding-top: 12px;
+    padding-right: 10px;
+}

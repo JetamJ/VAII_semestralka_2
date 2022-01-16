@@ -2,17 +2,19 @@
 
 namespace App\Controllers;
 
+use App\Config\Configuration;
 use App\Core\AControllerBase;
 use App\Models\MenuModel;
 use App\Models\RegistraciaModel;
 use App\Prihlasenie;
+use App\Controllers\AControllerPresmeruj;
 
 /**
  * Class HomeController
  * Example of simple controller
  * @package App\Controllers
  */
-class HomeController extends AControllerBase
+class HomeController extends AControllerPresmeruj
 {
 
     public function index()
@@ -28,20 +30,6 @@ class HomeController extends AControllerBase
     }
 
     public function kontakt()
-    {
-        return $this->html(
-            []
-        );
-    }
-
-    public function login()
-    {
-        return $this->html(
-            []
-        );
-    }
-
-    public function vytvorUcet()
     {
         return $this->html(
             []
@@ -64,6 +52,14 @@ class HomeController extends AControllerBase
         );
     }
 
+    public function profil()
+    {
+        return $this->html(
+            []
+        );
+    }
+
+
     public function pridaj()
     {
         if ($this->kontrola($_POST['nazov'],$_POST['zlozenie'],$_POST['img'],$_POST['cena'])) {
@@ -73,9 +69,9 @@ class HomeController extends AControllerBase
             $Model->setImg($_POST['img']);
             $Model->setCena($_POST['cena']);
             $Model->save();
-            $this->vratMenu("?c=home&a=menu","");
+            $this->presmeruj("?c=home&a=menu","");
         }else {
-            $this->vratMenu("?c=home&a=menu","Zadali ste zle parametre");
+            $this->presmeruj("?c=home&a=menu","Zadali ste zle parametre");
         }
     }
 
@@ -83,17 +79,10 @@ class HomeController extends AControllerBase
     {
         $Model = MenuModel::getOne($_GET['id']);
         $Model->delete();
-        $this->vratMenu("?c=home&a=menu","");
+        $this->presmeruj("?c=home&a=menu","");
     }
 
-    public function vratMenu($cesta, $sprava)
-    {
-        if ($sprava == ""){
-            header("Location:$cesta");
-        }else {
-            header("Location:$cesta&error=$sprava");
-        }
-    }
+
 
     public function uprav(){
         if ($this->kontrola($_POST['nazov'],$_POST['zlozenie'],$_POST['img'],$_POST['cena'])) {
@@ -103,9 +92,9 @@ class HomeController extends AControllerBase
             $Model->setImg($_POST['img']);
             $Model->setCena($_POST['cena']);
             $Model->save();
-            $this->vratMenu("?c=home&a=menu", "");
+            $this->presmeruj("?c=home&a=menu", "");
         } else {
-            $this->vratMenu("?c=home&a=menu","Zadali ste zle parametre");
+            $this->presmeruj("?c=home&a=menu","Zadali ste zle parametre");
         }
     }
 
@@ -123,29 +112,19 @@ class HomeController extends AControllerBase
         }
     }
 
-    public function zaregistruj()
-    {
-        $Model = new RegistraciaModel();
-        $Model->setMeno($_POST['meno']);
-        $Model->setPriezvisko($_POST['priezvisko']);
-        $Model->setEmail($_POST['email']);
-        $Model->setHeslo(password_hash($_POST['heslo'],PASSWORD_DEFAULT));
-        $Model->save();
-        $this->vratMenu("?c=home&a=login","");
-    }
+    public function upravFotku(){
+        if(isset($_FILES['subor'])){
+            if($_FILES["subor"]["error"] == UPLOAD_ERR_OK){
+                $tmp_name = $_FILES["subor"]["tmp_name"];
+                $name = time()."_".$_FILES["subor"]["name"];
+                $path = Configuration::UPLOAD_DIR."/$name";
+                move_uploaded_file($tmp_name, $path);
 
-    public function prihlasenie(){
-        $heslo = $_POST['heslo'];
-        $data = RegistraciaModel::getAll('email = ?', [$_POST['email']]);
-        if (password_verify($heslo, $data[0]->heslo)){
-            Prihlasenie::prihlasit($data[0]->meno);
-            $this->vratMenu("?c=home&a=menu","");
-            return;
+                $data = \App\Models\RegistraciaModel::getOne(\App\Prihlasenie::getId());
+                $data->setProfilovka($name);
+                $data->save();
+            }
         }
-        $this->vratMenu("?c=home&a=login","Zadali ste nespravne udaje");
-    }
-
-    public function oshlasenie(){
-        Prihlasenie::odhlasit();
+        $this->presmeruj("?c=home&a=profil", "");
     }
 }

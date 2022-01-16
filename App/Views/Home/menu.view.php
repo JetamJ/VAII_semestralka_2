@@ -16,11 +16,14 @@
                 <p class="text-muted"><?= $menu->zlozenie?></p>
                 <p class="text-muted"><?= $menu->cena?> €</p>
                 <div class="btn-group">
-                    <a class="btn btn-uprav" href="?c=home&a=upravPolozku&id=<?= $menu->id ?>&nazov=<?= $menu->nazov ?>&zlozenie=<?= $menu->zlozenie ?>&img=<?= $menu->img ?>&cena=<?= $menu->cena ?>">Uprav</a>
+                    <?php if(\App\Prihlasenie::jePrihlaseny() && \App\Prihlasenie::jeAdmin()){?>
+                    <a class="btn btn-uprav" href="?c=home&a=upravPolozku&id=<?= $menu->id ?>">Uprav</a>
                     <a class="btn btn-vymaz" onclick="return confirm('Ste si isty, že chcete vymazať túto položku?');" href="?a=vymaz&id=<?=$menu->id?>">Vymaž</a>
+                    <?php } ?>
                 </div>
             </div>
             <?php } ?>
+            <?php if(\App\Prihlasenie::jePrihlaseny() && \App\Prihlasenie::jeAdmin()){?>
             <div class="col-md-12">
                 <form action="">
                     <form action="">
@@ -28,6 +31,7 @@
                     </form>
                 </form>
             </div>
+            <?php } ?>
         </div>
     </div>
 </section>

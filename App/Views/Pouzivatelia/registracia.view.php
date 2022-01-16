@@ -1,3 +1,9 @@
+<?php if (isset($_GET['error'])) {?>
+<div class="alert alert-danger alert-dismissible">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <?= $_GET['error'] ?>
+</div>
+<?php } ?>
 <section class="vh-100" style="background-color: #eee;">
     <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-75">
@@ -10,7 +16,7 @@
 
                                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Registrácia</p>
 
-                                <form class="mx-1 mx-md-4" method="post" action="?a=zaregistruj">
+                                <form class="mx-1 mx-md-4" method="post" action="?c=pouzivatelia&a=zaregistruj">
 
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
@@ -43,7 +49,7 @@
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="password" id="heslo2" class="form-control" placeholder="Zopakujte heslo" />
+                                            <input type="password" name="heslo2" id="heslo2" class="form-control" placeholder="Zopakujte heslo" />
                                         </div>
                                     </div>
 
