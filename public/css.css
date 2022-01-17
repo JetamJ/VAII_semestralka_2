@@ -73,7 +73,7 @@ header.masthead {
 
 .dalsi {
     cursor: pointer;
-    position: center;
+
     top: 40%;
     width: auto;
     padding: 16px;
@@ -89,7 +89,7 @@ header.masthead {
 
 .predchadzajuci {
     cursor: pointer;
-    position: center;
+
     top: 40%;
     width: auto;
     padding: 16px;

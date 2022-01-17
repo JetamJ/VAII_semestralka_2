@@ -1,5 +1,5 @@
-<body onload="aktualny(1)">
-<section class="page-section">
+
+<div class="page-section">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4">
@@ -35,7 +35,7 @@
                 <div class="row">
                     <?php $data = \App\Models\ObrazkyModel::getAll();
                     foreach ($data as $obrazok) { ?>
-                        <img class="col-3 restaurant-photo" src="<?= $obrazok->cesta?>" alt="fotka restauracie">
+                        <img class="col-3 restaurant-photo" onload="aktualny(1)" src="<?= $obrazok->cesta?>" alt="fotka restauracie">
                     <?php }?>
                 </div>
                 <?php if(\App\Prihlasenie::jePrihlaseny() && \App\Prihlasenie::jeAdmin()){?>
@@ -47,5 +47,4 @@
             </div>
         </div>
     </div>
-</section>
-</body>
+</div>
