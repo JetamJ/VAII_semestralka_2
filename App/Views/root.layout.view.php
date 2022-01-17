@@ -21,8 +21,11 @@
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                 <li class="nav-item"><a class="nav-link" href="?c=home">Domov</a></li>
                 <li class="nav-item"><a class="nav-link" href="?c=home&a=menu">Menu</a></li>
-                <li class="nav-item"><a class="nav-link" href="?c=home&a=kontakt">Kontakt</a></li>
+                <li class="nav-item"><a class="nav-link" href="?c=kontakt&a=kontakt">Kontakt</a></li>
                 <?php if(\App\Prihlasenie::jePrihlaseny()){?>
+                    <?php if(\App\Prihlasenie::jePrihlaseny() && \App\Prihlasenie::jeAdmin()){?>
+                        <li class="nav-item"><a class="nav-link" href="?c=pouzivatelia&a=zoznamPouzivatelov">Pouzivatelia</a></li>
+                    <?php } ?>
                     <li class="nav-item"><a class="nav-link" href="?c=pouzivatelia&a=profil">Profil</a></li>
                     <li class="nav-item"><a class="nav-link" href="?c=pouzivatelia&a=odhlasenie">Odhlasit</a></li>
                 <?php } else {?>

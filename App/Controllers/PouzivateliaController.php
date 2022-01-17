@@ -35,6 +35,19 @@ class PouzivateliaController extends AControllerPresmeruj
         );
     }
 
+    public function upravProfil()
+    {
+        return $this->html(
+            []
+        );
+    }
+
+    public function zoznamPouzivatelov()
+    {
+        return $this->html(
+            []
+        );
+    }
 
 
     public function zaregistruj()
@@ -91,6 +104,26 @@ class PouzivateliaController extends AControllerPresmeruj
         return true;
     }
 
+    public function kontrola2($meno, $priezvisko, $email, $telefon, $adresa){
+        if (empty($meno) || !is_string($meno)) {
+            return false;
+        }
+        if (empty($priezvisko) || !is_string($priezvisko)) {
+            return false;
+        }
+        if (empty($email) || !is_string($email)) {
+
+            return false;
+        }
+        if (!is_string($telefon) ) {
+            return false;
+        }
+        if (!is_string($adresa) ) {
+            return false;
+        }
+        return true;
+    }
+
     public function kontrolaEmail($email){
         $data = RegistraciaModel::getAll('email = ?', [$_POST['email']]);
         if($data[0]->email == $email){
@@ -114,4 +147,25 @@ class PouzivateliaController extends AControllerPresmeruj
         $this->presmeruj("?c=pouzivatelia&a=profil", "");
     }
 
+    public function vymazUcet(){
+        $ucet = RegistraciaModel::getOne($_GET['id']);
+        $ucet->delete();
+        $this->odhlasenie();
+        $this->presmeruj("?c=home&a=index", "");
+    }
+
+    public function upravUcet(){
+        if($this->kontrola2($_POST['meno'],$_POST['priezvisko'],$_POST['email'],$_POST['telefon'],$_POST['adresa'])) {
+            $ucet = RegistraciaModel::getOne($_GET['id']);
+            $ucet->setMeno($_POST['meno']);
+            $ucet->setPriezvisko($_POST['priezvisko']);
+            $ucet->setEmail($_POST['email']);
+            $ucet->setTelefon($_POST['telefon']);
+            $ucet->setAdresa($_POST['adresa']);
+            $ucet->save();
+            $this->presmeruj("?c=pouzivatelia&a=profil", "");
+        } else {
+            $this->presmeruj("?c=pouzivatelia&a=profil", "Zadali ste zle udaje");
+        }
+    }
 }

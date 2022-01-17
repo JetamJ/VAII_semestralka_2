@@ -20,5 +20,5 @@ class Configuration
 
     public const DEBUG_QUERY = false;
 
-    public const UPLOAD_DIR = "public/imgs";
+    public const UPLOAD_DIR = "assets/img";
 }

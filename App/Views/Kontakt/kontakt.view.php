@@ -23,19 +23,27 @@
                 <br />
                 <p>Otváracie hodiny:</p>
                 <div id="otvaracky"></div>
+                <?php if(\App\Prihlasenie::jePrihlaseny() && \App\Prihlasenie::jeAdmin()){?>
+                    <button  class="btn btn-primary btn-zatvor">zatvorit pobocku</button>
+                    <button  class="btn btn-primary btn-otvor">otvorit pobocku</button>
+                <?php }?>
             </div>
             <div class="col-md-8">
                 <h4 class="my-3">Galéria:</h4>
                 <a class="predchadzajuci" onclick="posun(-1)">❮</a>
                 <a class="dalsi" onclick="posun(1)">❯</a>
                 <div class="row">
-                    <img class="col-3 restaurant-photo" src="semestralka/assets/img/best_burger2.jpg" alt="fotka restauracie">
-                    <img class="col-3 restaurant-photo" src="semestralka/assets/img/best_burger3.jpg" alt="fotka restauracie">
-                    <img class="col-3 restaurant-photo" src="semestralka/assets/img/best_burger.jpg" alt="fotka restauracie">
-                    <img class="col-3 restaurant-photo" src="semestralka/assets/img/best_burger6.jpg" alt="fotka restauracie">
-                    <img class="col-3 restaurant-photo" src="semestralka/assets/img/best_burger5.jpg" alt="fotka burgrov">
-                    <img class="col-3 restaurant-photo" src="semestralka/assets/img/logo.jpg" alt="fotka restauracie">
+                    <?php $data = \App\Models\ObrazkyModel::getAll();
+                    foreach ($data as $obrazok) { ?>
+                        <img class="col-3 restaurant-photo" src="<?= $obrazok->cesta?>" alt="fotka restauracie">
+                    <?php }?>
                 </div>
+                <?php if(\App\Prihlasenie::jePrihlaseny() && \App\Prihlasenie::jeAdmin()){?>
+                    <form method="post" enctype="multipart/form-data" action="?c=kontakt&a=pridajFotku">
+                        <input name="subor" class="form-control vyber-file " id="formFileLg" type="file">
+                        <button type="pridajFotku" class="btn btn-primary btn-pridaj-fotku">pridať fotku</button>
+                    </form>
+                <?php }?>
             </div>
         </div>
     </div>

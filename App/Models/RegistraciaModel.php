@@ -16,6 +16,8 @@ class RegistraciaModel extends Model
     public $heslo;
     public $status;
     public $profilovka;
+    public $telefon;
+    public $adresa;
 
     public function __construct()
     {
@@ -26,11 +28,13 @@ class RegistraciaModel extends Model
         $this->heslo = null;
         $this->status = null;
         $this->profilovka = null;
+        $this->telefon = null;
+        $this->adresa = null;
     }
 
     static public function setDbColumns()
     {
-        return ['id','email', 'meno', 'priezvisko',  'heslo', 'status', 'profilovka'];
+        return ['id','email', 'meno', 'priezvisko',  'heslo', 'status', 'profilovka','telefon','adresa'];
     }
 
     static public function setTableName()
@@ -46,6 +50,42 @@ class RegistraciaModel extends Model
     public function setMeno($meno): void
     {
         $this->meno = $meno;
+    }
+
+    /**
+     * @return null
+     */
+    public function getTelefon()
+    {
+        return $this->telefon;
+    }
+
+    /**
+     * @param null $telefon
+     * @return RegistraciaModel
+     */
+    public function setTelefon($telefon)
+    {
+        $this->telefon = $telefon;
+        return $this;
+    }
+
+    /**
+     * @return null
+     */
+    public function getAdresa()
+    {
+        return $this->adresa;
+    }
+
+    /**
+     * @param null $adresa
+     * @return RegistraciaModel
+     */
+    public function setAdresa($adresa)
+    {
+        $this->adresa = $adresa;
+        return $this;
     }
 
     public function getPriezvisko()
@@ -76,6 +116,24 @@ class RegistraciaModel extends Model
     public function setHeslo($heslo): void
     {
         $this->heslo = $heslo;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     * @return RegistraciaModel
+     */
+    public function setId(int $id): RegistraciaModel
+    {
+        $this->id = $id;
+        return $this;
     }
 
     public function getStatus()

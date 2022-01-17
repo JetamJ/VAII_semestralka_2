@@ -31,12 +31,6 @@ class HomeController extends AControllerPresmeruj
         return $this->html(MenuModel::getAll());
     }
 
-    public function kontakt()
-    {
-        return $this->html(
-            []
-        );
-    }
 
     public function pridajPolozku()
     {
@@ -114,14 +108,6 @@ class HomeController extends AControllerPresmeruj
         return true;
     }
 
-
-
-    public function getPobocka(){
-        $kontakt = PobockyModel::getAll('id = ?', [$_POST['id']]);
-        $otvaracky = OtvarackyModel::getAll('id_pobocka = ?', [$_POST['id']]);
-        $data = ['kontakt'=>$kontakt[0] ?? [], 'otvaracky'=> $otvaracky];
-        return $this->json($data);
-    }
 }
 
 

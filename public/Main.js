@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $("#vyberMesto").change(function (){
-        $.post('?c=home&a=getPobocka',{id:$(this).val()},function (data){
+        $.post('?c=kontakt&a=getPobocka',{id:$(this).val()},function (data){
             if(typeof data.kontakt.id !== undefined){
                 vyplnKontakt(data.kontakt);
             }
@@ -10,6 +10,24 @@ $(document).ready(function(){
         })
     })
     $('#vyberMesto').change();
+
+    $('.btn-zatvor').click(function (){
+        id = $('#vyberMesto').val();
+        $.post('?c=kontakt&a=zatvor&id='+id,function (data){
+            if(typeof data.otvaracky.id !== undefined){
+                vyplnOtvaracky(data.otvaracky);
+            }
+        })
+    })
+
+    $('.btn-otvor').click(function (){
+        id = $('#vyberMesto').val();
+        $.post('?c=kontakt&a=otvor&id='+id,function (data){
+            if(typeof data.otvaracky.id !== undefined){
+                vyplnOtvaracky(data.otvaracky);
+            }
+        })
+    })
 
     $('.btn-vymaz').click(function (){
         id = $(this).attr('itemid');
@@ -42,3 +60,5 @@ function vyplnOtvaracky(data){
     });
     console.log(data);
 }
+
+

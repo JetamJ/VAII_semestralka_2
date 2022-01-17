@@ -1,3 +1,4 @@
+//kod použity z w3school
 var cisloObrazku = 1;
 showSlides(cisloObrazku);
 

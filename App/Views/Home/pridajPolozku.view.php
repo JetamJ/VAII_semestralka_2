@@ -9,7 +9,7 @@
         <div class="form-group row">
             <label for="inputPassword" class="col-sm-2 col-form-label">Zloženie</label>
             <div class="col-sm-10">
-                <input type="text" name="zlozenie" class="form-control " id="zlozenie" placeholder="Zajte zloženie burgru" required></input>
+                <input type="text" name="zlozenie" class="form-control " id="zlozenie" placeholder="Zajte zloženie burgru" required>
             </div>
         </div>
         <div class="form-group row">

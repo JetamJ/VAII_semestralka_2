@@ -118,9 +118,14 @@ header.masthead {
 
 .vyber-file{
     width: fit-content;
-    margin-left: 220px;
+    margin-left: 150px;
 }
 
 .btn-zmenit{
-    margin-left: 340px;
+    margin-left: 230px;
+}
+
+.btn-pridaj-fotku{
+    margin-top: 0;
+    margin-left: 200px;
 }

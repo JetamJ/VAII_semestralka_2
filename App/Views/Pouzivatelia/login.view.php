@@ -41,7 +41,7 @@
 
                                     <div class="text-center text-lg-start mt-8 pt-2 ">
                                         <button type="prihlasenie" class="btn btn-primary btn-lg">Login</button>
-                                        <p class="small fw-bold mt-2 pt-1 mb-0">Nemaš učet? <a href="?c=pouzivatelia&a=registracia"" class="link-danger">Zaregistruj sa</a></p>
+                                        <p class="small fw-bold mt-2 pt-1 mb-0">Nemaš učet? <a href="?c=pouzivatelia&a=registracia" class="link-danger">Zaregistruj sa</a></p>
                                     </div>
 
                                 </form>
