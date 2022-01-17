@@ -115,7 +115,7 @@ class PouzivateliaController extends AControllerPresmeruj
 
             return false;
         }
-        if (!is_string($telefon) || strlen($telefon) < 10 || strlen($telefon) > 13) {
+        if (!is_string($telefon) || strlen($telefon) > 13) {
             return false;
         }
         if (!is_string($adresa) ) {

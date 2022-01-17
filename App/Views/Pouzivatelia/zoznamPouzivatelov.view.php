@@ -25,7 +25,7 @@
                     <?php } else {?>
                         <td><?= $pouzivatel->telefon?></td>
                     <?php }?>
-                    <?php if($pouzivatel->telefon == "") {?>
+                    <?php if($pouzivatel->adresa == "") {?>
                         <td>nepridane</td>
                     <?php } else {?>
                         <td><?= $pouzivatel->adresa?></td>
