@@ -111,3 +111,16 @@ header.masthead {
     padding-top: 12px;
     padding-right: 10px;
 }
+
+.selectBar{
+    width: fit-content;
+}
+
+.vyber-file{
+    width: fit-content;
+    margin-left: 220px;
+}
+
+.btn-zmenit{
+    margin-left: 340px;
+}

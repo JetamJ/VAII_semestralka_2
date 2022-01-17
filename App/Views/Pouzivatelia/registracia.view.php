@@ -21,35 +21,35 @@
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="text" name="meno" id="meno" class="form-control" placeholder="Zadajte meno" />
+                                            <input type="text" name="meno" id="meno" class="form-control" placeholder="Zadajte meno" required/>
                                         </div>
                                     </div>
 
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="text" name="priezvisko" id="priezvisko" class="form-control" placeholder="Zadajte priezvisko" />
+                                            <input type="text" name="priezvisko" id="priezvisko" class="form-control" placeholder="Zadajte priezvisko" required/>
                                         </div>
                                     </div>
 
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="email" name="email" id="email" class="form-control" placeholder="Zadajte email" />
+                                            <input type="email" name="email" id="email" class="form-control" placeholder="Zadajte email" required/>
                                         </div>
                                     </div>
 
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="password" name="heslo" id="heslo" class="form-control" placeholder="Zadajte heslo" />
+                                            <input type="password" name="heslo" id="heslo" class="form-control" placeholder="Zadajte heslo" required/>
                                         </div>
                                     </div>
 
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="password" name="heslo2" id="heslo2" class="form-control" placeholder="Zopakujte heslo" />
+                                            <input type="password" name="heslo2" id="heslo2" class="form-control" placeholder="Zopakujte heslo" required/>
                                         </div>
                                     </div>
 

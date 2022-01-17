@@ -7,6 +7,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="semestralka/public/css.css">
     <script type="text/javascript" src="semestralka/public/Galery.js"></script>
+    <script type="text/javascript" src="semestralka/public/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="semestralka/public/Main.js"></script>
     <title>Best burger</title>
 
 </head>
@@ -21,7 +23,7 @@
                 <li class="nav-item"><a class="nav-link" href="?c=home&a=menu">Menu</a></li>
                 <li class="nav-item"><a class="nav-link" href="?c=home&a=kontakt">Kontakt</a></li>
                 <?php if(\App\Prihlasenie::jePrihlaseny()){?>
-                    <li class="nav-item"><a class="nav-link" href="?c=home&a=profil">Profil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="?c=pouzivatelia&a=profil">Profil</a></li>
                     <li class="nav-item"><a class="nav-link" href="?c=pouzivatelia&a=odhlasenie">Odhlasit</a></li>
                 <?php } else {?>
                     <li class="nav-item"><a class="nav-link" href="?c=pouzivatelia&a=login">Prihlasit</a></li>

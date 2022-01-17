@@ -23,5 +23,7 @@ function showSlides(n) {
     for (i = 0; i < obrazky.length; i++) {
         obrazky[i].style.display = "none";
     }
-    obrazky[cisloObrazku-1].style.display = "block";
+    if(obrazky.length > 0) {
+        obrazky[cisloObrazku - 1].style.display = "block";
+    }
 }

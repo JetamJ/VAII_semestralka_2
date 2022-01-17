@@ -9,7 +9,7 @@
             <div class="col-md-4">
                 <img class="picture" src="semestralka/assets/img/kuchar.jpg" alt="kuchar">
                 <h4 class="my-3">Špičkový kuchári</h4>
-                <p class="text-muted">Vštci kuchári sú v našom obore skúsený a pracujú s radosťou, aby ste si mohli svoj burger užiť na 100%.</p>
+                <p class="text-muted">Všetci kuchári sú v našom obore skúsený a pracujú s radosťou, aby ste si mohli svoj burger užiť na 100%.</p>
             </div>
             <div class="col-md-4">
                 <img class="picture" src="semestralka/assets/img/rychla-doprava.png" alt="obrazok dopravy">

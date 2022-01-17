@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Config\Configuration;
 use App\Core\AControllerBase;
 use App\Models\MenuModel;
+use App\Models\OtvarackyModel;
+use App\Models\PobockyModel;
 use App\Models\RegistraciaModel;
 use App\Prihlasenie;
 use App\Controllers\AControllerPresmeruj;
@@ -52,12 +54,6 @@ class HomeController extends AControllerPresmeruj
         );
     }
 
-    public function profil()
-    {
-        return $this->html(
-            []
-        );
-    }
 
 
     public function pridaj()
@@ -71,15 +67,19 @@ class HomeController extends AControllerPresmeruj
             $Model->save();
             $this->presmeruj("?c=home&a=menu","");
         }else {
-            $this->presmeruj("?c=home&a=menu","Zadali ste zle parametre");
+            $this->presmeruj("?c=home&a=menu","Zadali ste zle udaje");
         }
     }
 
     public function vymaz()
     {
-        $Model = MenuModel::getOne($_GET['id']);
-        $Model->delete();
-        $this->presmeruj("?c=home&a=menu","");
+        $menu = MenuModel::getOne($_GET['id']);
+        try{
+            $menu->delete();
+        }catch (\Exception $e){
+            return $this->json(['err' => $e->getMessage()]);
+        }
+        return $this->json(true);
     }
 
 
@@ -94,37 +94,36 @@ class HomeController extends AControllerPresmeruj
             $Model->save();
             $this->presmeruj("?c=home&a=menu", "");
         } else {
-            $this->presmeruj("?c=home&a=menu","Zadali ste zle parametre");
+            $this->presmeruj("?c=home&a=menu","Zadali ste zle udaje");
         }
     }
 
     public function kontrola($nazov, $zlozenie, $img, $cena){
-        if ($nazov == null){
+        if (empty($nazov) || !is_string($nazov)) {
             return false;
-        }elseif ($zlozenie == null){
-            return false;
-        }elseif ($img == null){
-            return false;
-        }elseif ($cena == null){
-            return false;
-        }else {
-            return true;
         }
+        if (empty($zlozenie) || !is_string($zlozenie)) {
+            return false;
+        }
+        if (empty($img) || !is_string($img)) {
+            return false;
+        }
+        if (empty($cena) || !is_string($cena) ) {
+            return false;
+        }
+        return true;
     }
 
-    public function upravFotku(){
-        if(isset($_FILES['subor'])){
-            if($_FILES["subor"]["error"] == UPLOAD_ERR_OK){
-                $tmp_name = $_FILES["subor"]["tmp_name"];
-                $name = time()."_".$_FILES["subor"]["name"];
-                $path = Configuration::UPLOAD_DIR."/$name";
-                move_uploaded_file($tmp_name, $path);
 
-                $data = \App\Models\RegistraciaModel::getOne(\App\Prihlasenie::getId());
-                $data->setProfilovka($name);
-                $data->save();
-            }
-        }
-        $this->presmeruj("?c=home&a=profil", "");
+
+    public function getPobocka(){
+        $kontakt = PobockyModel::getAll('id = ?', [$_POST['id']]);
+        $otvaracky = OtvarackyModel::getAll('id_pobocka = ?', [$_POST['id']]);
+        $data = ['kontakt'=>$kontakt[0] ?? [], 'otvaracky'=> $otvaracky];
+        return $this->json($data);
     }
 }
+
+
+
+

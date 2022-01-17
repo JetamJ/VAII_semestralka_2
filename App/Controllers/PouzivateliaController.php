@@ -2,8 +2,10 @@
 
 namespace App\Controllers;
 
+use App\Config\Configuration;
 use App\Models\RegistraciaModel;
 use App\Prihlasenie;
+use mysqli;
 
 
 class PouzivateliaController extends AControllerPresmeruj
@@ -26,20 +28,34 @@ class PouzivateliaController extends AControllerPresmeruj
         );
     }
 
+    public function profil()
+    {
+        return $this->html(
+            []
+        );
+    }
+
+
 
     public function zaregistruj()
     {
-        if ($_POST['heslo'] == $_POST['heslo2']) {
-            $Model = new RegistraciaModel();
-            $Model->setMeno($_POST['meno']);
-            $Model->setPriezvisko($_POST['priezvisko']);
-            $Model->setEmail($_POST['email']);
-            $Model->setHeslo(password_hash($_POST['heslo'], PASSWORD_DEFAULT));
-            $Model->save();
-            $this->presmeruj("?c=pouzivatelia&a=login", "");
-        } else {
-            $this->presmeruj("?c=pouzivatelia&a=registracia", "Zadali ste nespravne heslo");
+        if($this->kontrola($_POST['meno'],$_POST['priezvisko'],$_POST['email'],$_POST['heslo'])){
+            $this->kontrolaEmail($_POST['email']);
+            if ($_POST['heslo'] == $_POST['heslo2']) {
+                $Model = new RegistraciaModel();
+                $Model->setMeno($_POST['meno']);
+                $Model->setPriezvisko($_POST['priezvisko']);
+                $Model->setEmail($_POST['email']);
+                $Model->setHeslo(password_hash($_POST['heslo'], PASSWORD_DEFAULT));
+                $Model->save();
+                $this->presmeruj("?c=pouzivatelia&a=login", "");
+            } else {
+                $this->presmeruj("?c=pouzivatelia&a=registracia", "Zadali ste nespravne heslo");
+            }
+        }else{
+            $this->presmeruj("?c=pouzivatelia&a=registracia", "Zadali ste neplatne udaje");
         }
+
     }
 
     public function prihlasenie(){
@@ -57,4 +73,45 @@ class PouzivateliaController extends AControllerPresmeruj
         Prihlasenie::odhlasit();
         $this->presmeruj("?c=home&a=index","");
     }
+
+    public function kontrola($meno, $priezvisko, $email, $heslo){
+        if (empty($meno) || !is_string($meno)) {
+            return false;
+        }
+        if (empty($priezvisko) || !is_string($priezvisko)) {
+            return false;
+        }
+        if (empty($email) || !is_string($email)) {
+
+            return false;
+        }
+        if (empty($heslo) || !is_string($heslo) ) {
+            return false;
+        }
+        return true;
+    }
+
+    public function kontrolaEmail($email){
+        $data = RegistraciaModel::getAll('email = ?', [$_POST['email']]);
+        if($data[0]->email == $email){
+            $this->presmeruj("?c=pouzivatelia&a=registracia", "Takyto email sa uz pouziva");
+        }
+    }
+
+    public function upravFotku(){
+        if(isset($_FILES['subor'])){
+            if($_FILES["subor"]["error"] == UPLOAD_ERR_OK){
+                $tmp_name = $_FILES["subor"]["tmp_name"];
+                $name = time()."_".$_FILES["subor"]["name"];
+                $path = Configuration::UPLOAD_DIR."/$name";
+                move_uploaded_file($tmp_name, $path);
+
+                $data = \App\Models\RegistraciaModel::getOne(\App\Prihlasenie::getId());
+                $data->setProfilovka($name);
+                $data->save();
+            }
+        }
+        $this->presmeruj("?c=pouzivatelia&a=profil", "");
+    }
+
 }

@@ -32,8 +32,6 @@
             </div>
         </div>
 
-
-
         <button type="pridaj" class="btn btn-outline-success">Upraviť</button>
     </form>
 </div>

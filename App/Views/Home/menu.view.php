@@ -10,7 +10,7 @@
             <h2>Burgre</h2>
             <?php /** @var \App\Models\MenuModel[] $data */
             foreach ($data as $menu) { ?>
-            <div class="col-md-4 menu">
+            <div class="col-md-4 menu vymaz_<?= $menu->id ?>">
                 <img class="picture-burger" src=<?= $menu->img?> alt="burger">
                 <h4 class="my-3"><?= $menu->nazov?></h4>
                 <p class="text-muted"><?= $menu->zlozenie?></p>
@@ -18,7 +18,7 @@
                 <div class="btn-group">
                     <?php if(\App\Prihlasenie::jePrihlaseny() && \App\Prihlasenie::jeAdmin()){?>
                     <a class="btn btn-uprav" href="?c=home&a=upravPolozku&id=<?= $menu->id ?>">Uprav</a>
-                    <a class="btn btn-vymaz" onclick="return confirm('Ste si isty, že chcete vymazať túto položku?');" href="?a=vymaz&id=<?=$menu->id?>">Vymaž</a>
+                        <a class="btn btn-vymaz" itemid="<?= $menu->id ?>">Vymaž</a>
                     <?php } ?>
                 </div>
             </div>

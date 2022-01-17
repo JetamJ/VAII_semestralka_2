@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row">
             <?php $data = \App\Models\RegistraciaModel::getOne(\App\Prihlasenie::getId())?>
-            <div class="col-md-3">
+            <div class="col-md-5">
                 <div class="text-center">
                     <?php if(($data->getProfilovka()) == null){ ?>
                         <img src="https://ldreality.sk/wp-content/uploads/2016/04/anonym-219x300.jpg" width="200" class="rounded-circle">
@@ -12,7 +12,7 @@
                     <?php }?>
                 </div>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-7">
                 <div class="col-lg-8">
                     <div class="card mb-4">
                         <div class="card-body">
@@ -64,12 +64,10 @@
                     </div>
                 </div>
             </div>
-            <form method="post" enctype="multipart/form-data" action="?c=home&a=upravFotku">
-                <div class="col-md-3">
-                    <div class="text-center">
-                        <input name="subor" class="form-control " id="formFileLg" type="file">
-                        <button type="upravFotku" class="btn btn-outline-success">zmeniť</button>
-                    </div>
+            <form method="post" enctype="multipart/form-data" action="?c=pouzivatelia&a=upravFotku">
+                <div class="col-md-5">
+                    <input name="subor" class="form-control vyber-file " id="formFileLg" type="file">
+                    <button type="upravFotku" class="btn btn-outline-success btn-zmenit">zmeniť</button>
                 </div>
             </form>
     </div>
