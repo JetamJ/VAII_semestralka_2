@@ -1,14 +1,13 @@
-<body>
-<section class="page-section">
+<div class="page-section">
     <div class="container-fluid">
         <div class="row">
             <?php $data = \App\Models\RegistraciaModel::getOne(\App\Prihlasenie::getId())?>
             <div class="col-md-4">
                 <div class="text-center">
                     <?php if(($data->getProfilovka()) == null){ ?>
-                        <img src="https://ldreality.sk/wp-content/uploads/2016/04/anonym-219x300.jpg" width="200" class="rounded-circle">
+                        <img src="https://ldreality.sk/wp-content/uploads/2016/04/anonym-219x300.jpg" alt="profilovka" width="200" class="rounded-circle">
                     <?php }else{?>
-                        <img src="/semestralka/<?=\App\Config\Configuration::UPLOAD_DIR."/".$data->getProfilovka()?>" width="200" class="rounded-circle">
+                        <img src="/semestralka/<?=\App\Config\Configuration::UPLOAD_DIR."/".$data->getProfilovka()?>" alt="profilovka" width="200" class="rounded-circle">
                     <?php }?>
                 </div>
             </div>
@@ -75,16 +74,16 @@
             <div class="col-md-2">
             <a class="btn btn-primary nav-link" href="?c=pouzivatelia&a=upravProfil&id=<?= $data->getId()?>">zmeniť udaje</a>
             <form method="post" enctype="multipart/form-data" action="?c=pouzivatelia&a=vymazUcet&id=<?= $data->getId()?>">
-                <button type="vymazUcet" class="btn btn-primary">vymazat učet</button>
+                <button class="btn btn-primary">vymazat učet</button>
             </form>
             </div>
             <form method="post" enctype="multipart/form-data" action="?c=pouzivatelia&a=upravFotku">
                 <div class="col-md-5">
                     <input name="subor" class="form-control vyber-file " id="formFileLg" type="file">
-                    <button type="upravFotku" class="btn btn-outline-success btn-zmenit">zmeniť fotku</button>
+                    <button class="btn btn-outline-success btn-zmenit">zmeniť fotku</button>
                 </div>
             </form>
 
     </div>
-</section>
-</body>
+</div>
+</div>

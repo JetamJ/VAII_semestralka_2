@@ -17,9 +17,7 @@
                 <p class="text-muted">Objednávky doručujeme do 60 minnút, vždy teplé a krásne upečené.</p>
             </div>
             <div class="col-md-12">
-                <form action="">
-                    <a class="btn btn-primary nav-link" href="?c=home&a=kontakt">Galéria</a>
-                </form>
+                <a class="btn btn-primary nav-link" href="?c=kontakt&a=kontakt">Galéria</a>
             </div>
         </div>
     </div>

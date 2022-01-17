@@ -1,11 +1,10 @@
-<body>
-<section class="page-section">
+<div class="page-section">
     <div class="container-fluid">
         <div class="row">
             <table class="table">
                 <thead>
                 <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">id</th>
                     <th scope="col">Meno</th>
                     <th scope="col">Priezvisko</th>
                     <th scope="col">Email</th>
@@ -36,5 +35,5 @@
                 </tbody>
             </table>
     </div>
-</section>
-</body>
+    </div>
+</div>

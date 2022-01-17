@@ -4,7 +4,7 @@
     <?= $_GET['error'] ?>
 </div>
 <?php } ?>
-<section class="vh-100" style="background-color: #eee;">
+<div class="vh-100" style="background-color: #eee;">
     <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-75">
 
@@ -54,9 +54,8 @@
                                     </div>
 
                                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                        <button type="zaregistruj" class="btn btn-primary btn-lg">Zaregistrovať</button>
+                                        <button class="btn btn-primary btn-lg">Zaregistrovať</button>
                                     </div>
-
                                 </form>
                         </div>
                     </div>
@@ -64,4 +63,5 @@
             </div>
         </div>
     </div>
-</section>
+    </div>
+</div>

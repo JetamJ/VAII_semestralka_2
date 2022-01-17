@@ -4,7 +4,7 @@
         <?= $_GET['error'] ?>
     </div>
 <?php } ?>
-<section class="vh-100" style="background-color: #eee;">
+<div class="vh-100" style="background-color: #eee;">
     <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-75">
             <div class="col-lg-12 col-xl-11">
@@ -40,7 +40,7 @@
                                     </div>
 
                                     <div class="text-center text-lg-start mt-8 pt-2 ">
-                                        <button type="prihlasenie" class="btn btn-primary btn-lg">Login</button>
+                                        <button class="btn btn-primary btn-lg">Login</button>
                                         <p class="small fw-bold mt-2 pt-1 mb-0">Nemaš učet? <a href="?c=pouzivatelia&a=registracia" class="link-danger">Zaregistruj sa</a></p>
                                     </div>
 
@@ -51,4 +51,5 @@
                 </div>
             </div>
         </div>
-</section>
+    </div>
+</div>
